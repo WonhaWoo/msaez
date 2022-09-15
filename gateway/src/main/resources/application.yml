@@ -1,0 +1,74 @@
+server:
+  port: 8088
+
+---
+
+spring:
+  profiles: default
+  cloud:
+    gateway:
+      routes:
+        - id: BoundedContext344
+          uri: http://localhost:8081
+          predicates:
+            - Path=/files/**, 
+        - id: BoundedContext904
+          uri: http://localhost:8082
+          predicates:
+            - Path=/indices/**, 
+        - id: BoundedContext339
+          uri: http://localhost:8083
+          predicates:
+            - Path=/videos/**, 
+        - id: frontend
+          uri: http://localhost:8080
+          predicates:
+            - Path=/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: BoundedContext344
+          uri: http://boundedContext344:8080
+          predicates:
+            - Path=/files/**, 
+        - id: BoundedContext904
+          uri: http://boundedContext904:8080
+          predicates:
+            - Path=/indices/**, 
+        - id: BoundedContext339
+          uri: http://boundedContext339:8080
+          predicates:
+            - Path=/videos/**, 
+        - id: frontend
+          uri: http://frontend:8080
+          predicates:
+            - Path=/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
