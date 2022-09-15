@@ -3,22 +3,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: BoundedContext344
+  name: drive
   labels:
-    app: BoundedContext344
+    app: drive
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: BoundedContext344
+      app: drive
   template:
     metadata:
       labels:
-        app: BoundedContext344
+        app: drive
     spec:
       containers:
-        - name: BoundedContext344
-          image: username/BoundedContext344:latest
+        - name: drive
+          image: username/drive:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -43,22 +43,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: BoundedContext904
+  name: indexer
   labels:
-    app: BoundedContext904
+    app: indexer
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: BoundedContext904
+      app: indexer
   template:
     metadata:
       labels:
-        app: BoundedContext904
+        app: indexer
     spec:
       containers:
-        - name: BoundedContext904
-          image: username/BoundedContext904:latest
+        - name: indexer
+          image: username/indexer:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -83,22 +83,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: BoundedContext339
+  name: processer
   labels:
-    app: BoundedContext339
+    app: processer
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: BoundedContext339
+      app: processer
   template:
     metadata:
       labels:
-        app: BoundedContext339
+        app: processer
     spec:
       containers:
-        - name: BoundedContext339
-          image: username/BoundedContext339:latest
+        - name: processer
+          image: username/processer:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -125,15 +125,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: BoundedContext344
+  name: drive
   labels:
-    app: BoundedContext344
+    app: drive
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: BoundedContext344
+    app: drive
 
 
 ---
@@ -142,15 +142,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: BoundedContext904
+  name: indexer
   labels:
-    app: BoundedContext904
+    app: indexer
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: BoundedContext904
+    app: indexer
 
 
 ---
@@ -159,13 +159,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: BoundedContext339
+  name: processer
   labels:
-    app: BoundedContext339
+    app: processer
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: BoundedContext339
+    app: processer
 

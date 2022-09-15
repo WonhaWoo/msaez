@@ -8,15 +8,15 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: BoundedContext344
+        - id: drive
           uri: http://localhost:8081
           predicates:
             - Path=/files/**, 
-        - id: BoundedContext904
+        - id: indexer
           uri: http://localhost:8082
           predicates:
             - Path=/indices/**, 
-        - id: BoundedContext339
+        - id: processer
           uri: http://localhost:8083
           predicates:
             - Path=/videos/**, 
@@ -43,16 +43,16 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: BoundedContext344
-          uri: http://boundedContext344:8080
+        - id: drive
+          uri: http://drive:8080
           predicates:
             - Path=/files/**, 
-        - id: BoundedContext904
-          uri: http://boundedContext904:8080
+        - id: indexer
+          uri: http://indexer:8080
           predicates:
             - Path=/indices/**, 
-        - id: BoundedContext339
-          uri: http://boundedContext339:8080
+        - id: processer
+          uri: http://processer:8080
           predicates:
             - Path=/videos/**, 
         - id: frontend
